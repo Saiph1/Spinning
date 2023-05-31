@@ -12,20 +12,19 @@ int main() {
     // This is defined as the dot product between the surface normal and the light direction. 
     char illum[] = ".,-~:;=!*%#$@";
     // Define the light direction as (0,1,-1)
-    float R1 = 4, R2 = 8, K1=20, K2 = 50; 
+    float R1 = 4, R2 = 8, K1=80, K2 = 40; 
     // viewsize = (K1*(R1+R2)/(K2+0))*(8/3);
     // cout << viewsize; 
     // K1 = viewsize*K2*3/(8*(R1+R2));
     viewsize = 30; 
     // Initialize the board
-    string board[viewsize][viewsize];
-    for (int j = 0; j < viewsize; j++)
-        for (int k = 0; k < viewsize; k++)
-            board[j][k] = " ";
-
     float A = 0, B = 0; 
-
+    int q = 2; 
     while(1){
+        string board[viewsize][viewsize];
+        for (int j = 0; j < viewsize; j++)
+            for (int k = 0; k < viewsize; k++)
+                board[j][k] = " ";
         // Pre-computed terms: for every rotation per frames
         // Constructing the donut shape, an1 for cross-sectional circle, an2 for rotating circle in 3D
         float cA = cos(A);
@@ -42,7 +41,9 @@ int main() {
                 // compute 3D x,y,z:
                 float x3d = (R2+R1*can1)*(cB*can2+sA*sB*san2)-R1*cA*sB*san1;
                 float y3d = (R2+R1*can1)*(sB*can2-sA*cB*san2)+R1*cA*cB*san1;
-                float z3d = (cA)*(R2+R1*can1)*san2+R1*sA*san1; 
+                // **************** K2??
+                float z3d = K2+(cA)*(R2+R1*can1)*san2+R1*sA*san1; 
+                // cout << "z3d " << z3d << endl; 
                 // determine final location of the x,y in 2D plane
                 int final_x = (K1*x3d)/(K2+z3d);
                 int final_y = (K1*y3d)/(K2+z3d);
@@ -56,20 +57,19 @@ int main() {
                 // board[final_x][final_y] = illum[(round((L+1)*5))];
                 // cout << L << endl ;
                 //L ranges from -sqrt(2) to +sqrt(2). 
-                
-                int tmp; 
-                if (L<0)
-                    tmp = static_cast<int>(round((-(L*L)+2)*3));
-                else
-                    tmp = static_cast<int>(round(L*L+2)*3);
+                // ignore the negative values of L, as it is not pointing towards the direction. 
+                int tmp = static_cast<int>(round(L*L*6)); 
                 // cout << tmp << endl; 
                 // cout << static_cast<int>(round((L+1)*5)) << endl; 
                 board[final_x][final_y] = illum[tmp];
-                // if (1/(z3d+50) > ztemp[final_x][final_y]){
-                //     ztemp[final_x][final_y] = 1/(z3d+50);
-                //     board[final_x][final_y] = illum[tmp];
-                //     // cout << illum[10]; 
-                // }
+                if (L>0){
+                // cout << (1/(z3d+K2)>0) << endl ; 
+                    if ((1/(z3d+K2)) > ztemp[final_x][final_y]){
+                        board[final_x][final_y] = illum[tmp];
+                        ztemp[final_x][final_y] = 1/(z3d+K2);
+                        // cout << illum[10]; 
+                    }
+                }
             }
         }
         
@@ -81,6 +81,7 @@ int main() {
             }
             cout << endl;
         }
+
         A += spacing; 
         B += spacing;
     }
