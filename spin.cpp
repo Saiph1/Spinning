@@ -5,21 +5,23 @@ using namespace std;
 
 int main() { 
     // Predefine viewport
-    const int viewheight = 20, viewwidth = 50; 
+    int viewsize; 
     // Defining iterator for period of 2pi, with angular velocity = 0.01 (per frames) 
-    float i = 0, spacing = 0.01; 
+    float i = 0, spacing = 0.02; 
     // Defining what should be printed for each point.
     // This is defined as the dot product between the surface normal and the light direction. 
-    char illum[] = ".,-~:=!*#$@";
-    // Defining container for x,y,z in 3D space. 
-    float x3d = 0, y3d=0, z3d=0; 
+    char illum[] = ".,-~:;=!*%#$@";
     // Define the light direction as (0,1,-1)
-    const float R1 = 2, R2 = 8, K1 = 100, K2 = 50; 
-
+    float R1 = 4, R2 = 8, K1, K2 = 15; 
+    // viewsize = (K1*(R1+R2)/(K2+0))*(8/3);
+    // cout << viewsize; 
+    // K1 = viewsize*K2*3/(8*(R1+R2));
+    viewsize = 30; 
+    K1 = 10;
     // Initialize the board
-    string board[viewwidth][viewheight];
-    for (int j = 0; j < viewwidth; j++)
-        for (int k = 0; k < viewheight; k++)
+    string board[viewsize][viewsize];
+    for (int j = 0; j < viewsize; j++)
+        for (int k = 0; k < viewsize; k++)
             board[j][k] = " ";
 
     while(1){
@@ -30,7 +32,7 @@ int main() {
         float sA = sin(A);
         float cB = cos(B);
         float sB = sin(B);
-
+        float ztemp[viewsize][viewsize];
         // Rotating donut shape in the 3D space, in 2 different plane. 
         // an2 = the smaller circle from the cross-sectional area.
         for (float an1 = 0; an1 < 2*M_PI; an1+= spacing){
@@ -46,32 +48,33 @@ int main() {
                 int final_x = (K1*x3d)/(K2+z3d);
                 int final_y = (K1*y3d)/(K2+z3d);
                 // move to the middle of the viewport. 
-                final_x += viewwidth/2;
-                final_y += viewheight/2;
+                final_x += viewsize/2;
+                final_y += viewsize/2;
                 // cout << final_x << endl << final_y << endl;
                 // Compute the lightness;
                 float L = can1*can2*sB-cA*can2*san1-sA*san2+cB*(cA*san2-can2*sA*san1);
                 // cout << final_x << endl << final_y << endl; 
                 // board[final_x][final_y] = illum[(round((L+1)*5))];
                 // cout << L << endl ;
-                int tmp = static_cast<int>(round((L+1)*5));
+                //L ranges from -sqrt(2) to +sqrt(2). 
+                int tmp; 
+                if (L<0)
+                    tmp = static_cast<int>(round((-(L*L)+2)*3));
+                else
+                    tmp = static_cast<int>(round(L*L+2)*3);
                 // cout << static_cast<int>(round((L+1)*5)) << endl; 
-                if (tmp< 0)
-                    board[final_x][final_y] = illum[0];
-                else if (tmp > 10)
-                    board[final_x][final_y] = illum[10];
-                else 
+                if ((1/z3d) > ztemp[final_x][final_y]){
+                    ztemp[final_x][final_y] = 1/z3d;
                     board[final_x][final_y] = illum[tmp];
-                // cout << illum[10]; 
+                    // cout << illum[10]; 
+                }
             }
         }
         
-
         // Projecting the 3D space back to the viewport in 2D; 
-
         // Print board
-        for (int y = 0; y < viewheight; y++){
-            for (int x = 0; x < viewwidth; x++){
+        for (int y = 0; y < viewsize; y++){
+            for (int x = 0; x < viewsize; x++){
                 cout << board[x][y]; 
             }
             cout << endl;
