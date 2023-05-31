@@ -6,6 +6,7 @@ Supplement materials and self-note:
 - ϕ = donut rotation in y-axis 
 - Rotation x-axis by A
 - Rotation y-axis by B 
+- R2 > R1, R2 = radius of the large donut, R1 = radius of the donut intersection
 
 Mapping for the donut in 3D space: 
 <img width="890" alt="Screenshot 2023-05-31 at 5 44 26 PM" src="https://github.com/Saiph1/Spinning/assets/75319087/0bf55631-35b6-4c79-ba04-b12091ad22f1">
