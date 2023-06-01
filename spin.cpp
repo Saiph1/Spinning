@@ -12,7 +12,7 @@ int main() {
     // This is defined as the dot product between the surface normal and the light direction. 
     char illum[] = ".,-~:;=!*%#$@";
     // Define the light direction as (0,1,-1)
-    float R1 = 4, R2 = 8, K1=80, K2 = 40; 
+    float R1 = 4, R2 = 8, K1=30, K2 = 40; 
     // viewsize = (K1*(R1+R2)/(K2+0))*(8/3);
     // cout << viewsize; 
     // K1 = viewsize*K2*3/(8*(R1+R2));
@@ -32,6 +32,9 @@ int main() {
         float cB = cos(B);
         float sB = sin(B);
         float ztemp[viewsize][viewsize];
+        for (int j = 0; j < viewsize; j++)
+            for (int k = 0; k < viewsize; k++)
+                ztemp[j][k] = 0;
         // Rotating donut shape in the 3D space, in 2 different plane. 
         // an2 = the smaller circle from the cross-sectional area.
         for (float an1 = 0; an1 < 2*M_PI; an1+= spacing){
@@ -41,8 +44,7 @@ int main() {
                 // compute 3D x,y,z:
                 float x3d = (R2+R1*can1)*(cB*can2+sA*sB*san2)-R1*cA*sB*san1;
                 float y3d = (R2+R1*can1)*(sB*can2-sA*cB*san2)+R1*cA*cB*san1;
-                // **************** K2??
-                float z3d = K2+(cA)*(R2+R1*can1)*san2+R1*sA*san1; 
+                float z3d = (cA)*(R2+R1*can1)*san2+R1*sA*san1; 
                 // cout << "z3d " << z3d << endl; 
                 // determine final location of the x,y in 2D plane
                 int final_x = (K1*x3d)/(K2+z3d);
