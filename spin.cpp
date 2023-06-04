@@ -7,7 +7,7 @@ int main() {
     // Predefine viewport
     int viewsize; 
     // Defining iterator for period of 2pi, with angular velocity = 0.01 (per frames) 
-    float i = 0, spacing = 0.02; 
+    float spacing = 0.02; 
     // Defining what should be printed for each point.
     // This is defined as the dot product between the surface normal and the light direction. 
     char illum[] = ".,-~:;=!*%#$@";
@@ -19,7 +19,6 @@ int main() {
     viewsize = 50; 
     // Initialize the board
     float A = 0, B = 0; 
-    int q = 2; 
     while(1){
         string board[viewsize][viewsize];
         for (int j = 0; j < viewsize; j++)
