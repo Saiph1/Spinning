@@ -1,7 +1,9 @@
 # Spinning
-Spin Spin Spin 
+Spin
 
-Supplement materials and self-note:
+<img width="200" alt="spin" src="https://github.com/Saiph1/Spinning/assets/75319087/3e9f28ea-a2da-46a7-ac3c-c522317de920">
+
+Supplement materials and self note:
 - θ is sweeping angle 0~2pi
 - ϕ = donut rotation in y-axis 
 - Rotation x-axis by A
@@ -19,4 +21,5 @@ Further defined projection to 2D plane:
 - K2 = distance from the point to the viewport
 <img width="323" alt="Screenshot 2023-05-31 at 6 45 39 PM" src="https://github.com/Saiph1/Spinning/assets/75319087/bb252880-8b0e-4da4-b317-084996718eb4">
 
+Source:
 https://www.a1k0n.net/2011/07/20/donut-math.html
