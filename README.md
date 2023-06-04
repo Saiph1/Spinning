@@ -1,6 +1,8 @@
 # Spinning
 Spin
+
 *Note that windows terminal does not work well. (Unsolved issue)
+
 <img width="200" alt="spin" src="https://github.com/Saiph1/Spinning/assets/75319087/b26d6944-3505-4b76-802a-2294780267ec">
 
 Supplement materials and self note:
