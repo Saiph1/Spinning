@@ -1,7 +1,7 @@
 # Spinning
 Spin
 
-<img width="200" alt="spin" src="https://github.com/Saiph1/Spinning/assets/75319087/3e9f28ea-a2da-46a7-ac3c-c522317de920">
+<img width="200" alt="spin" src="https://github.com/Saiph1/Spinning/assets/75319087/b26d6944-3505-4b76-802a-2294780267ec">
 
 Supplement materials and self note:
 - θ is sweeping angle 0~2pi
@@ -11,15 +11,15 @@ Supplement materials and self note:
 - R2 > R1, R2 = radius of the large donut, R1 = radius of the donut intersection
 
 Mapping for the donut in 3D space: 
-<img width="890" alt="Screenshot 2023-05-31 at 5 44 26 PM" src="https://github.com/Saiph1/Spinning/assets/75319087/0bf55631-35b6-4c79-ba04-b12091ad22f1">
+<img width="832" alt="Screenshot 2023-06-04 at 8 44 06 PM" src="https://github.com/Saiph1/Spinning/assets/75319087/1d30cd72-1650-4c59-b2e7-75338e67d3bf">
 
 Illumination = Surface normal dot product with light direction:
-<img width="962" alt="Screenshot 2023-05-31 at 6 22 16 PM" src="https://github.com/Saiph1/Spinning/assets/75319087/298b4a8b-9d1f-4ae2-bd72-20a35e764a09">
+<img width="962" alt="Screenshot 2023-05-31 at 6 22 16 PM" src="https://github.com/Saiph1/Spinning/assets/75319087/6bc30dc3-d555-43c6-aa8e-e24fac3faf0b">
 
 Further defined projection to 2D plane:
 - K1 = scale
 - K2 = distance from the point to the viewport
-<img width="323" alt="Screenshot 2023-05-31 at 6 45 39 PM" src="https://github.com/Saiph1/Spinning/assets/75319087/bb252880-8b0e-4da4-b317-084996718eb4">
+<img width="323" alt="Screenshot 2023-05-31 at 6 45 39 PM" src="https://github.com/Saiph1/Spinning/assets/75319087/03196af5-8756-4a19-840f-aee328cdb3ca">
 
 Source:
 https://www.a1k0n.net/2011/07/20/donut-math.html
