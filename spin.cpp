@@ -1,10 +1,6 @@
 #include <iostream>
 #include <math.h>
 #include <string.h>
-#include <thread>
-#include <chrono>
-using namespace std::this_thread; // sleep_for, sleep_until
-using namespace std::chrono; // nanoseconds, system_clock, seconds
 using namespace std; 
 
 int main() { 
@@ -86,11 +82,12 @@ int main() {
             }
             cout << endl;
         }
-        sleep_for(nanoseconds(10));
 
         A += spacing; 
         B += spacing;
+        // Update rotation 
     }
 
+    // terminal in windows does not work well as it updates slowly
     return 0; 
 }
