@@ -12,11 +12,11 @@ int main() {
     // This is defined as the dot product between the surface normal and the light direction. 
     char illum[] = ".,-~:;=!*%#$@";
     // Define the light direction as (0,1,-1)
-    float R1 = 4, R2 = 8, K1=30, K2 = 40; 
+    float R1 = 4, R2 = 8, K1=60, K2 = 40; 
     // viewsize = (K1*(R1+R2)/(K2+0))*(8/3);
     // cout << viewsize; 
     // K1 = viewsize*K2*3/(8*(R1+R2));
-    viewsize = 30; 
+    viewsize = 50; 
     // Initialize the board
     float A = 0, B = 0; 
     int q = 2; 
@@ -63,14 +63,18 @@ int main() {
                 int tmp = static_cast<int>(round(L*L*6)); 
                 // cout << tmp << endl; 
                 // cout << static_cast<int>(round((L+1)*5)) << endl; 
-                board[final_x][final_y] = illum[tmp];
-                if (L>0){
+                // board[final_x][final_y] = illum[tmp];
+                if (1){
                 // cout << (1/(z3d+K2)>0) << endl ; 
                     if ((1/(z3d+K2)) > ztemp[final_x][final_y]){
                         board[final_x][final_y] = illum[tmp];
                         ztemp[final_x][final_y] = 1/(z3d+K2);
                         // cout << illum[10]; 
                     }
+                }
+                else if (L<0){
+                    // board[final_x][final_y] = illum[0];
+                    // ztemp[final_x][final_y] = 0;
                 }
             }
         }
