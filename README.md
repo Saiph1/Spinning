@@ -7,7 +7,7 @@ Spin
 
 Supplement materials and self note:
 - θ is sweeping angle 0~2pi
-- ϕ = donut rotation in y-axis 
+- ϕ = cross-sectional circle of the donut
 - Rotation x-axis by A
 - Rotation y-axis by B 
 - R2 > R1, R2 = radius of the large donut, R1 = radius of the donut intersection
