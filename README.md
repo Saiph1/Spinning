@@ -1,4 +1,4 @@
-# Spinning
+# Spinning Donut
 Spin
 
 *Note that windows terminal does not work well. (Unsolved issue)
